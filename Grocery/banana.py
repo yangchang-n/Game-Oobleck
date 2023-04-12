@@ -77,24 +77,26 @@ class Konjac(pygame.sprite.Sprite) :
         elif self.rect.right > screen_width :
             self.x_speed = - self.x_speed
 
-all_sprites = pygame.sprite.Group()
+characters = pygame.sprite.Group()
+objects = pygame.sprite.Group()
 
-character_xpos, character_ypos = screen_width / 2, screen_height / 2
-oobleck_xpos, oobleck_ypos = random.randrange(20, screen_width - 20 + 1), random.randrange(20, screen_height - 20 + 1)
-konjac_xpos, konjac_ypos = random.randrange(20, screen_width - 20 + 1), random.randrange(20, screen_height - 20 + 1)
+character_xpos, character_ypos = (screen_width / 2) - 15, (screen_height / 2) - 15
+oobleck_xpos, oobleck_ypos = random.randrange(10, screen_width - 40 + 1), random.randrange(10, screen_height - 40 + 1)
+konjac_xpos, konjac_ypos = random.randrange(10, screen_width - 40 + 1), random.randrange(10, screen_height - 40 + 1)
 
 character = Character(character_xpos, character_ypos)
 oobleck = Oobleck(oobleck_xpos, oobleck_ypos)
 konjac = Konjac(konjac_xpos, konjac_ypos)
 
-all_sprites.add(character)
-all_sprites.add(oobleck)
-all_sprites.add(konjac)
+characters.add(character)
+objects.add(oobleck)
+objects.add(konjac)
 
 running = True
 
 while running :
 
+    screen.fill((0, 0, 0))
     keys = pygame.key.get_pressed()
     clock.tick(60)
 
@@ -103,14 +105,14 @@ while running :
             running = False
 
     if character.rect.colliderect(oobleck.rect) :
-        all_sprites.remove(oobleck)
+        objects.remove(oobleck)
 
-    character.update(keys)
-    oobleck.update()
-    konjac.update()
+    characters.update(keys)
+    objects.update()
 
-    screen.fill((0, 0, 0))
-    all_sprites.draw(screen)
+    characters.draw(screen)
+    objects.draw(screen)
+
     pygame.display.update()
 
 pygame.quit()
