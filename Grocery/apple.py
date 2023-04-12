@@ -17,7 +17,7 @@ clock = pygame.time.Clock()
 # start_time = pygame.time.get_ticks()
 
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('Oobleck')
+pygame.display.set_caption('Apple')
 
 ##############################
 
@@ -88,7 +88,7 @@ running = True
 while running :
 
     keys = pygame.key.get_pressed()
-    clock.tick(144)
+    clock.tick(60)
 
     for event in pygame.event.get() :
         if event.type == pygame.QUIT or keys[pygame.K_ESCAPE] :
