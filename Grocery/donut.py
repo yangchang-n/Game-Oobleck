@@ -171,7 +171,7 @@ while not game_over :
                 game_over = True                
 
             elif start_button_rect.collidepoint(pygame.mouse.get_pos()) :
-                
+
                 maze = create_maze(WIDTH_UNIT, HEIGHT_UNIT)
                 oobleck_possible_coordinates = []
 
