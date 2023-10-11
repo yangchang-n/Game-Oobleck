@@ -1,6 +1,4 @@
-####
-
-<h1 align = center>Oobleck!</h1>
+# Oobleck!
 
 ####
 
